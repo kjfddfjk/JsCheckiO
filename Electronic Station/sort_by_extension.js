@@ -11,43 +11,33 @@
 // 
 // END_DESC
 
+
 import assert from "assert";
 
-function sortByExt(files: string[]): string[] {
-    let sorted = files.sort((a, b) => {
-        let aex = a.lastIndexOf(".");
-        let bex = b.lastIndexOf(".");
-        // if (a.slice(0, aex) != b.slice(0, bex)) {
-        //     if (a.slice(0, aex) > b.slice(0, bex))
-        //         return 1;
-        //     return -1;
-        // }
-        // if (a.slice(aex) > b.slice(bex))
-        //     return 1;
-        // return -1;
-        if (a.slice(aex) != b.slice(bex)) {
-            if (a.slice(aex) > b.slice(bex))
-                return 1;
-            return -1;
-        }
-        if (a.slice(0, aex) > b.slice(0, bex))
-            return 1;
-        return -1;
-    });
-    console.log("sorted = " + sorted);
-    return files;
+function sortByExt(files) {
+    let arr = [];
+    for (let x of files) { 
+        let a =  x.split(/[\.]/g).filter(i => i.length > 0); 
+        let b = '';
+        if (a.length >= 2 && !x.endsWith('.'))
+            b = a[a.length - 1];
+    arr.push([b, x.replace(b, '')]);
+    }
+    return arr.sort().map(x => x[1].concat(x[0]));
 }
 
-console.log('Example:');
-console.log(sortByExt(['1.cad', '1.bat', '1.aa']));
+console.log('My Example:');
+// console.log(sortByExt(['1.cad', '1.bat', '1.aa']));
 
 // These "asserts" are used for self-checking
-// assert.deepEqual(sortByExt(['1.cad', '1.bat', '1.aa']), ['1.aa', '1.bat', '1.cad']);
-// assert.deepEqual(sortByExt(['1.cad', '1.bat', '1.aa', '2.bat']), ['1.aa', '1.bat', '1.cad', '2.bat']);
-// assert.deepEqual(sortByExt(['1.cad', '1.bat', '1.aa', '.bat']), ['.bat', '1.aa', '1.bat', '1.cad']);
-// assert.deepEqual(sortByExt(['1.cad', '1.bat', '.aa', '.bat']), ['.aa', '.bat', '1.bat', '1.cad']);
-// assert.deepEqual(sortByExt(['1.cad', '1.', '1.aa']), ['1.', '1.aa', '1.cad']);
-// assert.deepEqual(sortByExt(['1.cad', '1.bat', '1.aa', '1.aa.doc']), ['1.aa', '1.bat', '1.cad', '1.aa.doc']);
-// assert.deepEqual(sortByExt(['1.cad', '1.bat', '1.aa', '.aa.doc']), ['1.aa', '1.bat', '1.cad', '.aa.doc']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.bat', '1.aa']), ['1.aa', '1.bat', '1.cad']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.bat', '1.aa', '2.bat']), ['1.aa', '1.bat', '2.bat', '1.cad']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.bat', '1.aa', '.bat']), ['.bat', '1.aa', '1.bat', '1.cad']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.bat', '.aa', '.bat']), ['.aa', '.bat', '1.bat', '1.cad']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.', '1.aa']), ['1.', '1.aa', '1.cad']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.bat', '1.aa', '1.aa.doc']), ['1.aa', '1.bat', '1.cad', '1.aa.doc']);
+assert.deepStrictEqual(sortByExt(['1.cad', '1.bat', '1.aa', '.aa.doc']), ['1.aa', '1.bat', '1.cad', '.aa.doc']);
+assert.deepStrictEqual(sortByExt(['1.aa', '.bat', '1.bat', '1.cad']), ['.bat', '1.aa', '1.bat', '1.cad']);
+console.log(sortByExt(["1.cad","1.bat","1.aa","2.bat"]));
 
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

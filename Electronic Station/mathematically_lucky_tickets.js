@@ -23,6 +23,7 @@ import assert from "assert";
 
 function luckyTickets(value: string): boolean {
     // your code here
+    value
     return false;
 }
 
