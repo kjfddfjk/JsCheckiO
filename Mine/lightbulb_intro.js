@@ -19,9 +19,14 @@ import assert from "assert";
 
 function sumLight(els: Date[]): number {
     // how long the light bulb has been turned on
-
+    let seconds = 0;
+    for(let e = 0; e < els.length; e += 2) {
+        
+        // console.log(`1:${els[e + 1].getTime()} -  0:${els[e].getTime()} = ${els[1].getTime() - els[0].getTime()} / 1000 = ${els[1].getTime() - els[0].getTime()}`);
+        seconds += (els[e + 1].getTime() - els[e].getTime()) / 1000;
+    }
     // your code here
-    return 0;
+    return seconds;
 }
 
 console.log('Example:');
