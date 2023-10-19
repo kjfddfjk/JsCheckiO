@@ -26,7 +26,7 @@ function sortByExt(files) {
     return arr.sort().map(x => x[1].concat(x[0]));
 }
 
-console.log('My Example:');
+// console.log('My Example:');
 // console.log(sortByExt(['1.cad', '1.bat', '1.aa']));
 
 // These "asserts" are used for self-checking
