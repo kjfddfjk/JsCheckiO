@@ -35,5 +35,5 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
-
+#Checkio config file
 checkio.ini
