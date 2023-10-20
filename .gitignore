@@ -1,6 +1,7 @@
 # Build and Release Folders
 bin-debug/
 bin-release/
+node_modules/
 [Oo]bj/
 [Bb]in/
 
@@ -34,3 +35,5 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+checkio.ini
