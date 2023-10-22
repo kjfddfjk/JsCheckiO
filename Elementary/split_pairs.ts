@@ -27,8 +27,15 @@ function splitPairs(text: string): string[] {
             result[i / 2] = `${text[i]+text[i+1]}`;
         }
     }
+    // More elegant solution:
+    const result2 = [];
+    for (let i = 0; i < text.length; i += 2) {
+        result2.push(text.slice(i, i + 2).padEnd(2, '_'));
+    }
+
     console.log(result);
-    return result;
+    console.log(result2);
+    return result2;
 }
 
 console.log('Example:');

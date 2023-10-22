@@ -22,8 +22,8 @@
 import assert from "assert";
 
 function toTitleCase(sentence: string): string {
-    // your code here
-    return "";
+    let formated : string = sentence.replace(/\b(\w)(\w*)/g, (__, first, rest) => first.toUpperCase() + rest.toLowerCase());
+    return formated;
 }
 
 console.log("Example:");

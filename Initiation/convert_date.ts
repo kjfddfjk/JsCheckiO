@@ -23,7 +23,15 @@ import assert from "assert";
 
 function convertDate(date: string): string {
     // your code here
-    return "";
+    if(!date.match(/^\d{2}\/\d{2}\/\d{4}$/)){
+        return "Error: Invalid date.";
+    }
+    const [day, month, year] = date.split("/");
+    const d = new Date(`${year}-${month}-${day}`);
+    if(d.getDate() === Number(day) && d.getMonth() === Number(month) - 1 && d.getFullYear() === Number(year)){
+        return `${year}-${month}-${day}`;
+    }
+    return "Error: Invalid date.";
 }
 
 console.log("Example:");
