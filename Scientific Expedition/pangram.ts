@@ -16,8 +16,10 @@
 import assert from "assert";
 
 function checkPangram(text: string): boolean {
-    // your code here
-    return false;
+    for(let i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++) {
+        if(!new RegExp(`${String.fromCharCode(i)}`, "i").test(text)) return false;
+    }
+    return true;
 }
 
 console.log('Example:');

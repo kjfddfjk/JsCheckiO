@@ -19,11 +19,32 @@
 
 import assert from "assert";
 
-function removeBrackets(line: string): string {
-    // your code here
-    return line;
+function removeBrackets(line: string, first: boolean = true): string {
+    let array = new Array();
+    array.push(line);
+    do{
+        let current = array.shift();
+        if(isBracketBalance(current)){
+            return current;
+        }
+        for(let i = 0; i < current.length; i++){
+            if(isBracketBalance(current.slice(0, i) + current.slice(i + 1))){
+                return current.slice(0, i) + current.slice(i + 1);
+            }
+            array.push(current.slice(0, i) + current.slice(i + 1));
+        }
+    } while(array.length > 0);
+    return "";
 }
 
+function isBracketBalance(line: string): boolean{
+    let bracket = line.replace(/[^(){}\[\]]/g, '');
+    let previous = bracket;
+    do{
+        bracket = bracket.replace(/\(\)|\{\}|\[\]/g, '');
+    } while(bracket !== previous && (previous = bracket));
+    return !bracket;
+}
 console.log('Example:');
 console.log(removeBrackets('(()()'));
 
