@@ -21,9 +21,8 @@
 
 import assert from "assert";
 
-function findMessage(message: string) -> string {
-    // your code here
-    return message;
+function findMessage(message: string) : string {
+    return message.match(/[A-Z]/g)?.join("") || "";
 }
 
 console.log('Example:');

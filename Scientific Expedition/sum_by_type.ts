@@ -14,8 +14,8 @@
 import assert from "assert";
 
 function sumByTypes(values: Array<number|string>): [string, number] {
-    // your code here
-    return ['', 0];
+    let numSum: number = values.filter((v) : v is number => typeof v === 'number').reduce((a, b) => a + b, 0);
+    return [values.filter(v => typeof v === 'string').join(''), numSum];
 }
 
 console.log('Example:');
