@@ -1,7 +1,0 @@
-{
-    "type": "module",
-    "devDependencies": {
-        "@types/assert": "^1.5.2",
-        "@types/node": "^14.14.19"
-    }
-}
